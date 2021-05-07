@@ -1,0 +1,21 @@
+﻿<Window x:Class="TelefonkonyvDavid.LoginScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TelefonkonyvDavid"
+        mc:Ignorable="d"
+        Title="Login" Height="450" Width="450" Background="#F5D788" FontSize="14">
+    <!-- a bejelentkezési űrlap tartalma, és előtte még a Border-rel -->
+    <Border Background="#9B9655" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20">
+            <Label Content="Login" Foreground="White" FontSize="26" HorizontalAlignment="Center" />
+            <Separator></Separator>
+            <Label Content="Username" Foreground="White" />
+            <TextBox Name="tbUsername" Background="#F2F4F9" Foreground="Black" FontSize="19" />
+            <Label Content="Password" Foreground="White" />
+            <PasswordBox Name="pbPassword" Background="#F2F4F9" Foreground="Black" FontSize="19" />
+            <Button Name="btnSubmit" Click="btnSubmit_Click" Content="Submit" Margin="80,60,80,40" Background="#C2CEE5" Foreground="White" FontSize="19" />
+        </StackPanel>
+    </Border><!-- bejelentkezési űrlap vége -->
+</Window>

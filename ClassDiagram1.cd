@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TelefonkonyvDavid.MainWindow">
+    <Position X="0.75" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>TAAUAUiEABAAAAQAAAgAEiABAgAYABQAhAAQGFAAQAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PhoneBook.cnPhoneBook">
+    <Position X="3.5" Y="1.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAYAAAMBgAAQAgQgAEiAgAIgQAAAQAAAAAEA=</HashCode>
+      <FileName>dmPhoneBook.cnPhoneBook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhoneBook.Person">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAAAAAAoAAAAIAwAACAAAAACAAAAEAAAAAA=</HashCode>
+      <FileName>dmPhoneBook.Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhoneBook.Number">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAAAAAAAAAAAAAACAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>dmPhoneBook.Number.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhoneBook.City">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAACAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dmPhoneBook.City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TelefonkonyvDavid.LoginScreen">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>LoginScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

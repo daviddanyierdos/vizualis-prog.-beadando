@@ -1,0 +1,144 @@
+﻿<Window x:Class="TelefonkonyvDavid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TelefonkonyvDavid"
+        mc:Ignorable="d"
+        Title="PhoneBook" Height="570" Width="800">
+    <!-- grafikus felület DockPanel-ben -->
+    <DockPanel>
+        <!-- fölső menüsor -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Click="mi_ExitClick" />
+            </MenuItem>
+            <MenuItem Header="Query">
+                <MenuItem Header="Cities" Click="mi_CitiesClick" />
+                <MenuItem Header="Phone Numbers" Click="mi_NumbersClick" />
+                <MenuItem Header="All" Click="mi_AllClick" />
+            </MenuItem>
+            <MenuItem Header="New/Modify">
+                <MenuItem Header="Cities" Click="mi_NMCitiesClick" />
+                <MenuItem Header="Phone Numbers" Click="mi_NMPhoneNumbersClick" />
+                <MenuItem Header="People" Click="mi_NMPeopleClick" />
+            </MenuItem>
+        </Menu> <!-- fölső menüsor vége -->
+        <!-- városok táblázata -->
+        <DataGrid x:Name="dgCities" IsReadOnly="True" DockPanel.Dock="Top" Visibility="Collapsed" AutoGenerateColumns="False" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Zip Code" Binding="{Binding Zip}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+            </DataGrid.Columns>
+        </DataGrid> <!-- városok táblázat vége -->
+        <!-- telefonszámok táblázata -->
+        <DataGrid x:Name="dgNumbers" IsReadOnly="True" DockPanel.Dock="Top" Visibility="Collapsed" AutoGenerateColumns="False" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Number" Binding="{Binding NumberString}" />
+            </DataGrid.Columns>
+        </DataGrid> <!-- telefonszámok táblázat vége -->
+        <!-- személyek minden adatukkal táblázata -->
+        <DataGrid x:Name="dgAll" IsReadOnly="True" DockPanel.Dock="Top" Visibility="Collapsed" AutoGenerateColumns="False" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" />
+                <DataGridTextColumn Header="Zip Code" Binding="{Binding CityZip}" />
+                <DataGridTextColumn Header="City" Binding="{Binding CityName}" />
+                <DataGridTextColumn Header="Phone Numbers" Binding="{Binding NumberList}" />
+            </DataGrid.Columns>
+        </DataGrid> <!-- személyek minden adatukkal táblázat vége -->
+        <!-- város módosításának vagy új város rögzítésének lehetősége Grid-be téve -->
+        <Grid x:Name="grCity" Visibility="Collapsed" Margin="0,10,0,0" DataContext="{Binding}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="By Zip Code" Margin="5" />
+            <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" ItemsSource="{Binding}" DisplayMemberPath="Zip" IsSynchronizedWithCurrentItem="True" x:Name="cbZip" SelectionChanged="cbZip_SChanged" />
+            <Label Grid.Row="1" Grid.Column="0" Content="By Name" Margin="5" />
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding}" DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="True" x:Name="cbName" SelectionChanged="cbName_SChanged" />
+            <Label Grid.Row="2" Grid.Column="0" Content="Current Zip Code" Margin="5" />
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbZip" Margin="5" />
+            <Label Grid.Row="3" Grid.Column="0" Content="Current Name" Margin="5" />
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbName" Margin="5" />
+            <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
+                <Button Content="Save" Click="btNMSave_Click" Margin="5" Width="80" Height="30" />
+                <Button Content="Save as new City" Click="btNMSaveNew_Click" Margin="50,5,50,5" Width="150" Height="30" />
+                <Button Content="Back" Click="btNMBack_Click" Margin="5" Width="80" Height="30" />
+            </StackPanel>
+        </Grid> <!-- városok módosításának vagy új város rögzítésének lehetősége vége -->
+        <!-- telefonszám módosításának vagy új telefonszám rögzítésének lehetősége Grid-be téve -->
+        <Grid x:Name="grNumber" DataContext="{Binding}" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="By Phone Number" Grid.Row="0" Grid.Column="0" Margin="5"  />
+            <Label Content="Current Number" Grid.Row="1" Grid.Column="0" Margin="5"  />
+            <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" ItemsSource="{Binding}" DisplayMemberPath="NumberString" IsSynchronizedWithCurrentItem="True" x:Name="cbNumbers" SelectionChanged="cbNumbers_SChanged" />
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbCurrentNumber" Margin="5" />
+            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
+                <Button Content="Save" Click="btNMSaveNumber_Click" Margin="5" Width="80" Height="30" />
+                <Button Content="Save as new Number" Click="btNMSaveNewNumber_Click" Margin="50,5,50,5" Width="150" Height="30" />
+                <Button Content="Back" Click="btNMBackNumber_Click" Margin="5" Width="80" Height="30" />
+            </StackPanel>
+        </Grid> <!-- telefonszám módosításának vagy új telefonszám rögzítésének lehetősége vége -->
+        <!-- személy módosításának vagy új személy rögzítésének lehetősége Grid-be téve -->
+        <Grid x:Name="grPerson" Visibility="Collapsed" Margin="0,10,0,0" DataContext="{Binding}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="By Name" Margin="5" />
+            <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" ItemsSource="{Binding}" DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="True" x:Name="cbPersonName" SelectionChanged="cbPersonName_SChanged" />
+            <Label Grid.Row="1" Grid.Column="0" Content="By Address" Margin="5" />
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding}" DisplayMemberPath="Address" IsSynchronizedWithCurrentItem="True" x:Name="cbAddress" SelectionChanged="cbAddress_SChanged" />
+            <Label Grid.Row="2" Grid.Column="0" Content="By Zip Code" Margin="5" />
+            <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" ItemsSource="{Binding}" DisplayMemberPath="CityZip" IsSynchronizedWithCurrentItem="True" x:Name="cbPersonCityZip" SelectionChanged="cbPersonCityZip_SChanged" />
+            <Label Grid.Row="3" Grid.Column="0" Content="By City Name" Margin="5" />
+            <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" ItemsSource="{Binding}" DisplayMemberPath="CityName" IsSynchronizedWithCurrentItem="True" x:Name="cbPersonCityName" SelectionChanged="cbPersonCityName_SChanged" />
+            <Label Grid.Row="4" Grid.Column="0" Content="By Phone Number" Margin="5" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" ItemsSource="{Binding}" DisplayMemberPath="NumberList" IsSynchronizedWithCurrentItem="True" x:Name="cbPersonNumberList" SelectionChanged="cbPersonNumberList_SChanged" />
+            <Label Grid.Row="5" Grid.Column="0" Content="Current Name" Margin="5" />
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="tbPersonName" Margin="5" />
+            <Label Grid.Row="6" Grid.Column="0" Content="Current Address" Margin="5" />
+            <TextBox Grid.Row="6" Grid.Column="1" x:Name="tbAddress" Margin="5" />
+            <Label Grid.Row="7" Grid.Column="0" Content="Current Zip Code" Margin="5" />
+            <TextBox Grid.Row="7" Grid.Column="1" x:Name="tbCityZip" Margin="5" />
+            <Label Grid.Row="8" Grid.Column="0" Content="Current City Name" Margin="5" />
+            <TextBox Grid.Row="8" Grid.Column="1" x:Name="tbCityName" Margin="5" />
+            <Label Grid.Row="9" Grid.Column="0" Content="Current Phone Number(s)" Margin="5" />
+            <TextBox Grid.Row="9" Grid.Column="1" x:Name="tbNumberList" Margin="5" />
+            <StackPanel Grid.Row="10" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
+                <Button Content="Save" Click="btNMSavePerson_Click" Margin="5" Width="80" Height="30" />
+                <Button Content="Save as new Person" Click="btNMSaveNewPerson_Click" Margin="50,5,50,5" Width="150" Height="30" />
+                <Button Content="Back" Click="btNMBackPerson_Click" Margin="5" Width="80" Height="30" />
+            </StackPanel>
+        </Grid> <!-- személy módosításának vagy új személy rögzítésének lehetősége vége -->
+    </DockPanel>
+</Window>

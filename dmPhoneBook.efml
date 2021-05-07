@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore context-namespace="PhoneBook" namespace="PhoneBook" p1:name="cnPhoneBook" p1:Guid="77f235b1-9c14-4954-8a70-689d6edb453c" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="Person" entity-set="People" p1:Guid="06a290af-a40a-4ed2-808f-ceb1505dad1d">
+    <id name="Id" type="Int16" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="acab0cb0-1dd1-4ac1-9e9c-cbd96197f5c7">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="174c90d2-5282-48f2-8300-33bc3760c3f1">
+      <column name="" />
+    </property>
+    <property name="Address" type="String" p1:ValidateRequired="true" p1:Guid="a05e4498-b74c-48bf-8365-429ed44f73d5">
+      <column name="" />
+    </property>
+    <property name="Zip" type="Int32" shadow="True" p1:ValidateRequired="true" p1:Guid="f1b5cd1f-b24f-4d18-9d70-f898d90f33c9">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Number" entity-set="Numbers" p1:Guid="60e17b2e-616c-4973-bc5b-5258cc4470c9">
+    <id name="Id" type="Int16" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="302e1fb6-df30-4260-8da2-b2dd71fb2ba0">
+      <column name="" />
+    </id>
+    <property name="NumberString" type="String" p1:ValidateRequired="true" p1:Guid="781ae41d-0ab2-480e-856b-3a4e3f8c9692">
+      <column name="" />
+    </property>
+  </class>
+  <class name="City" entity-set="Cities" p1:Guid="a2712252-3f5e-4fbc-b635-04a52453fe6c">
+    <id name="Zip" type="Int32" p1:ValidateRequired="true" p1:Guid="6579e082-4f22-4d96-b619-ee598ec136cd">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="5633ad55-ab83-418c-b6d2-48338c9dfcc8">
+      <column name="" />
+    </property>
+  </class>
+  <class name="Login" entity-set="Logins" p1:Guid="077b656b-c6e8-4134-8099-e7ec51159778">
+    <id name="Id" type="Int16" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="9894064f-2f9c-4494-9c7f-c0277b92be55">
+      <column name="" />
+    </id>
+    <property name="Username" type="String" p1:ValidateRequired="true" p1:Guid="0097b085-c652-4fb6-b539-b3d43c30b272">
+      <column name="" />
+    </property>
+    <property name="Password" type="String" p1:ValidateRequired="true" p1:Guid="b1a1dedc-0c24-4df2-9b1c-23db380bd15e">
+      <column name="" />
+    </property>
+  </class>
+  <associations>
+    <association name="Person_Number" cardinality="ManyToMany" p1:Guid="a43a2018-166c-4c9e-91d8-7fdbb2527876">
+      <end1 multiplicity="Many" name="People" class="Number" relation-class="Person" lazy="False" p1:Guid="93df4d9b-10f5-4b22-a07c-9c4977c0ef0a">
+        <property name="Id" column="PersonId" />
+      </end1>
+      <end2 multiplicity="Many" name="Numbers" class="Person" relation-class="Number" lazy="False" p1:Guid="08aa264d-7903-402c-80f9-ce059d4bbffd">
+        <property name="Id" column="NumberId" />
+      </end2>
+    </association>
+    <association name="City_Person" cardinality="OneToMany" p1:Guid="29dad07e-2bba-4fe6-9508-32524ecaf22d">
+      <end1 multiplicity="One" name="City" class="Person" relation-class="City" constrained="True" lazy="False" p1:Guid="7727e223-be19-4241-87c0-737a348cb14c">
+        <property name="Zip" />
+      </end1>
+      <end2 multiplicity="Many" name="People" class="City" relation-class="Person" lazy="False" p1:Guid="82ea26e2-35c0-433a-ba6a-65c9412c08c5">
+        <property name="Zip" />
+      </end2>
+    </association>
+  </associations>
+</efcore>
