@@ -1,5 +1,5 @@
 # vizualis-prog.-beadando
-A telefonkönyves projecttel kapcsolatos a beadandó feladat. A megvalósításomat töltöttem ide fel.
+Ez egy többek között személyek (és adataik) tárolására alkalmas WPF alkalmazás, egyfajta telefonkönyv.
 
 A Login táblánál (tehát a "bejelentkezéshez") a beírandó adatok:
 Username: User1
