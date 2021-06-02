@@ -376,6 +376,14 @@ namespace TelefonkonyvDavid
             }
             p.Name = tbPersonName.Text;
             p.Address = tbAddress.Text;
+            p.Numbers.Clear();
+            string[] n = tbNumberList.Text.Split(",");
+            foreach(string nu in n)
+            {
+                Number num = new Number { NumberString = nu };
+                p.Numbers.Add(num);
+                num.People.Add(p);
+            }
             cn.SaveChanges();
             grPerson.Visibility = Visibility.Collapsed;
         }
