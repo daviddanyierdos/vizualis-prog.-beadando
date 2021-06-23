@@ -1,4 +1,4 @@
-# vizualis-prog.-beadando
+# Telefonkönyv
 Ez egy többek között személyek (és adataik) tárolására alkalmas WPF alkalmazás, egyfajta telefonkönyv.
 
 A Login táblánál (tehát a "bejelentkezéshez") a beírandó adatok:
