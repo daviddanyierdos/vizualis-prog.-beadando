@@ -1,12 +1,6 @@
-# Telefonkönyv
-Ez egy többek között személyek (és adataik) tárolására alkalmas WPF alkalmazás, egyfajta telefonkönyv.
+# PhoneBook
+This is a WPF application suitable for storing, among other things, people (and their data), functioning as a kind of phonebook.
 
-A Login táblánál (tehát a "bejelentkezéshez") a beírandó adatok:
-Username: User1
-Password: 123
-- majd a Submit -re kattintva töltődik majd be a 'PhoneBook' ablak, rajta a funkciókkal (File, Query, New/Modify).
-Városokat, telefonszámokat, illetve személyeket tarthatunk nyilván az alkalmazásban (azaz kérdezhetünk le a Query menün belül) - a személyekhez ilyen adatok
-tartoznak: név, cím, irányítószám, város, telefonszám.
-Minden létező adatot lehet módosítani kategóriánként (városok, telefonszámok, személyek), illetve új adatot (új várost, új telefonszámot, új személyt) is fel lehet
-vinni az alkalmazásba a New/Modify menüt használva.
-A File menü Exit menüpontját választva bezárhatjuk az alkalmazást.
+At the Login table (for "signing in"), the data to be entered are as follows: Username: User1 Password: 123
+
+- after clicking Submit, the 'PhoneBook' window will load with its functions (File, Query, New/Modify). You can manage cities, phone numbers, and individuals within the application (i.e., perform queries within the Query menu). The following data is associated with individuals: name, address, postal code, city, and phone number. You can modify any existing data by category (cities, phone numbers, individuals), and you can also add new data (a new city, new phone number, new person) using the New/Modify menu. By selecting the Exit option in the File menu, you can close the application.
